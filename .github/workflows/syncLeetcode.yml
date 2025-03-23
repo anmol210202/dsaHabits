@@ -23,4 +23,4 @@ jobs:
           leetcode-session: ${{ secrets.LEETCODE_SESSION }}
           filter-duplicate-secs: 0       # Sync every accepted submission
           verbose: true                  # Provides extra details in the commit message
-          commit-header: ":"  # Customized commit header
+          commit-header: "[Sync]:"  # Customized commit header
