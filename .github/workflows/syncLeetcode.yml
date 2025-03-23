@@ -1,0 +1,26 @@
+name: LeetCode Sync
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 8 * * *"  # Runs daily at 8 AM; adjust as needed
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Check out your repository
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Step 2: Run the LeetCode Sync action
+      - name: Sync 
+        uses: anmol210202/leetcode-sync@master
+        with:
+          github-token: ${{ github.token }}
+          leetcode-csrf-token: ${{ secrets.LEETCODE_CSRF_TOKEN }}
+          leetcode-session: ${{ secrets.LEETCODE_SESSION }}
+          filter-duplicate-secs: 0       # Sync every accepted submission
+          verbose: true                  # Provides extra details in the commit message
+          commit-header: "[Sync]:"  # Customized commit header
